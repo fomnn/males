@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col bg-slate-100 px-8 py-3 divide-y-2 space-y-4 z-10" :class="{ 'h-full': (showNavBelajar || !isMobile) }">
-    <div class="flex md:flex-col flex-col gap-5 mt-3 md:mt-6">
+  <div class="flex z-10 flex-col px-8 py-3 space-y-4 divide-y-2 bg-slate-100" :class="{ 'h-full': (showNavBelajar || !isMobile) }">
+    <div class="flex flex-col gap-5 mt-3 md:flex-col md:mt-6">
       <NuxtLink to="/">
         <img src="/logo.svg" />
       </NuxtLink>
@@ -8,7 +8,7 @@
         <button class="" @click="showNavBelajar = !showNavBelajar" v-if="isMobile">
           <Icon name="ci:hamburger-lg" class="text-lg" />
         </button>
-        <div class="flex items-center gap-1">
+        <div class="flex gap-1 items-center">
           <h1 class="text-base font-light">
             <span 
               class="cursor-pointer"
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="divide-y-2 space-y-3" v-show="(showNavBelajar || !isMobile)">
+    <div class="space-y-3 divide-y-2" v-show="(showNavBelajar || !isMobile)">
       <div class="">
         <h3 class="font-light">Kelas 10</h3>
         <div class="flex flex-col gap-2" v-if="babPerKelas['10']">
@@ -50,12 +50,12 @@
                 showNavBelajar = false,
                 GetCurBaborSubbab()
               ]"
-              class="hover:text-primary text-lg font-medium" 
+              class="text-lg font-medium hover:text-primary" 
               :class="{ 'text-primary': route.params.bab[0] == replaceSpacesWithDash(bab!.judul.toLowerCase()) && route.params.bab.length == 1 }"
               >
               {{ bab.judul }}
             </button>
-            <div class="ml-2 flex flex-col mt-0.5 gap-1">
+            <div class="flex flex-col gap-1 mt-0.5 ml-2">
               <button
                 class="hover:text-primary text-start" 
                 :class="{ 'text-primary': route.params.bab[1] == replaceSpacesWithDash(subbab.judul.toLowerCase()) }" 
@@ -83,8 +83,8 @@
                 showNavBelajar = false,
                 GetCurBaborSubbab()
               ]"
-              class="hover:text-primary text-lg font-medium" :class="{ 'text-primary': route.params.bab[0] == replaceSpacesWithDash(bab!.judul.toLowerCase()) && route.params.bab.length == 1 }">{{ bab.judul }}</button>
-            <div class="ml-2 flex flex-col mt-0.5 gap-1">
+              class="text-lg font-medium hover:text-primary" :class="{ 'text-primary': route.params.bab[0] == replaceSpacesWithDash(bab!.judul.toLowerCase()) && route.params.bab.length == 1 }">{{ bab.judul }}</button>
+            <div class="flex flex-col gap-1 mt-0.5 ml-2">
               <button
                 class="hover:text-primary text-start" 
                 :class="{ 'text-primary': route.params.bab[1] == replaceSpacesWithDash(subbab.judul.toLowerCase()) }" 
@@ -112,12 +112,12 @@
                 showNavBelajar = false,
                 GetCurBaborSubbab()
               ]"
-              class="hover:text-primary text-lg font-medium" 
+              class="text-lg font-medium hover:text-primary" 
               :class="{ 'text-primary': route.params.bab[0] == replaceSpacesWithDash(bab!.judul.toLowerCase()) && route.params.bab.length == 1 }"
               >
               {{ bab.judul }}
             </button>
-            <div class="ml-2 flex flex-col mt-0.5 gap-1">
+            <div class="flex flex-col gap-1 mt-0.5 ml-2">
               <button
                 class="hover:text-primary text-start" 
                 :class="{ 'text-primary': route.params.bab[1] == replaceSpacesWithDash(subbab.judul.toLowerCase()) }" 
@@ -140,12 +140,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { Database } from '~/types/database.types'
 import { capitalizeFirstLetter } from '~/utils/capitalizeFirstLetter';
 import { replaceSpacesWithDash } from '~/utils/replaceSpacesWithDash';
 
 const route = useRoute() // alamat url
-const client = useSupabaseClient<Database>() // client supabase
 const { width } = useWindowSize()
 const semuaBab = ref<Bab[] | undefined>() // daftar semua bab
 const curMapel = ref<Mapel | undefined>() // mata pelajaran saat ini
@@ -174,9 +172,7 @@ const GetCurBaborSubbab = async () => {
 }
 
 // membagi bab perkelas
-const babPerKelas: globalThis.Ref<{
-  [kelas: string]: Bab[]
-}> = ref<{ [kelas: string]: Bab[] }>({});
+const babPerKelas = ref<{ [kelas: string]: Bab[] }>({});
 
 // fungsi untuk membagi bab perkelas
 watch(semuaBab, () => {

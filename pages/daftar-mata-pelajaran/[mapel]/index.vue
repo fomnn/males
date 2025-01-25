@@ -4,7 +4,7 @@
       <Icon name="material-symbols:arrow-back-rounded" class="text-xl cursor-pointer" />
       <h1 class="text-base">Daftar Mata Pelajaran</h1>
     </NuxtLink>
-    <div class="flex flex-col md:flex-row md:items-center gap-3">
+    <div class="flex flex-col gap-3 md:flex-row md:items-center">
       <Icon :name="(curMapel?.icon! as string)" class="md:size-[8rem] size-[5rem]" :style="{ color: curMapel.tailwind_color }"
         v-if="curMapel" />
       <div class="space-y-2">
@@ -15,17 +15,17 @@
     <div class="flex gap-3">
       <button 
         v-for="(i) in kelas" 
-        class="px-8 py-1.5 rounded-md bg-slate-100 border"
+        class="px-8 py-1.5 rounded-md border bg-slate-100"
         :class="{ 'bg-slate-200 border-slate-400': i == curKelas }"
         @click="curKelas = i"
         >
         kelas {{ i }}
       </button>
     </div>
-    <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-3 pt-3" v-if="curBab?.length !== 0">
+    <div class="grid grid-cols-1 gap-y-3 gap-x-5 pt-3 lg:grid-cols-3 md:grid-cols-2" v-if="curBab?.length !== 0">
       <button 
         @click="navigateTo(`/belajar/${curMapel?.nama.toLowerCase()}/${replaceSpacesWithDash(mupel.judul.toLowerCase())}`)" 
-        class="border shadow-m rounded-lg px-5 py-3 cursor-pointer flex flex-col" 
+        class="flex flex-col px-5 py-3 rounded-lg border cursor-pointer shadow-m" 
         v-for="mupel of curBab" 
         :key="mupel.id"
         >
@@ -45,11 +45,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { Database } from '~/types/database.types'
 import { replaceSpacesWithDash } from '~/utils/replaceSpacesWithDash';
 
 const route = useRoute()
-const client = useSupabaseClient<Database>()
 
 const curBab = ref<Bab[] | undefined>()
 const curMapel = ref<Mapel | undefined>()

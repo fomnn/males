@@ -13,7 +13,6 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@pinia/nuxt",
     "@nuxtjs/google-fonts",
-    "@nuxtjs/supabase",
     "@nuxt/image"
   ],
   googleFonts: {
@@ -23,9 +22,8 @@ export default defineNuxtConfig({
     }
   },
   plugins: ["~/plugins/preline.client.ts"],
-  supabase: {
-    url: process.env.SUPABASE_URL,
-    key: process.env.SUPABASE_KEY,
-    redirect: false
+  typescript: {
+    strict: true,
+    typeCheck: true,
   }
 })

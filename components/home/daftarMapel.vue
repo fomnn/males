@@ -1,8 +1,5 @@
 <script setup lang="ts">
 
-import type { Database, Tables, Enums } from '~/types/database.types'
-const client = useSupabaseClient<Database>();
-
 const semuaMataPelajaran = async () => {
   try {
     const { data, error } = await client.from('mata_pelajaran').select('*').order('id', { ascending: true });
@@ -21,14 +18,14 @@ const semuaMapel = await semuaMataPelajaran()
       <h2 class="text-3xl">Daftar Mata Pelajaran</h2>
       <p>Apa yang kamu sukai? Apakah kamu tertarik pada ilmu alam, matematika, bahasa, seni, atau olahraga?</p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 z-40 p-5 whitespace-nowrap">
+    <div class="grid z-40 grid-cols-2 gap-2 p-5 whitespace-nowrap md:grid-cols-3 lg:grid-cols-5">
       <div 
-        class="border bg-white flex flex-col w-full items-center shadow-m rounded-2xl px-5 py-3 cursor-pointer transition-shadow duration-300 hover:shadow-md" 
+        class="flex flex-col items-center px-5 py-3 w-full bg-white rounded-2xl border transition-shadow duration-300 cursor-pointer shadow-m hover:shadow-md" 
         v-for="mapel of semuaMapel" 
         :key="mapel.id" 
         @click="navigateTo(`/daftar-mata-pelajaran/${replaceSpacesWithDash(mapel.nama.toLowerCase())}`)"
         >
-        <Icon :name="mapel.icon!" class="text-4xl mb-1" :style="{ 'color': mapel.tailwind_color! }" />
+        <Icon :name="mapel.icon!" class="mb-1 text-4xl" :style="{ 'color': mapel.tailwind_color! }" />
         <h4 class="text-xl font-medium">{{ mapel.nama }}</h4>
       </div>
     </div>

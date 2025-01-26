@@ -2,16 +2,11 @@
 definePageMeta({
   layout: "learn",
 });
-
-const route = useRoute();
-const { data: page } = await useAsyncData(route.path, () => {
-  return queryCollection("content").path(route.path).first();
-});
 </script>
 
 <template>
   <div>
-    <ContentRenderer v-if="page" :value="page" />
+    <p>haloo</p>
     <!-- <ContentDoc>
       <template #not-found>
         <h1>Materi Belum dibuatt, tunggu yaa🥺</h1>

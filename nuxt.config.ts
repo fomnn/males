@@ -16,7 +16,6 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/google-fonts",
     "@nuxt/image",
-    "@nuxt/content",
   ],
 
   googleFonts: {
@@ -29,13 +28,6 @@ export default defineNuxtConfig({
   experimental: {
     typedPages: true,
     scanPageMeta: true,
-  },
-
-  content: {
-    database: {
-      type: "postgres",
-      url: process.env.DATABASE_URL!,
-    },
   },
 
   plugins: ["~/plugins/preline.client.ts"],

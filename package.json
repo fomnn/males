@@ -15,7 +15,6 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@nuxt/content": "^3.0.0",
     "@prisma/client": "6.2.1",
     "preline": "^2.0.3"
   },

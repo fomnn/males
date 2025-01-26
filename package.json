@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@prisma/client": "6.2.1",
-    "preline": "^2.0.3"
+    "preline": "^2.7.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.0",

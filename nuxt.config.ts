@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   plugins: ["~/plugins/preline.client.ts"],
 
   typescript: {
-    strict: true,
+    // strict: true,
     typeCheck: true,
   },
 

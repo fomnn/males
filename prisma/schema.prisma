@@ -12,3 +12,36 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model subjects {
+  id             Int        @id @default(autoincrement())
+  description    String
+  icon           String?
+  name           String
+  slug      String
+  color String
+  chapters       chapters[] // Relasi ke tabel Bab
+}
+
+enum classes {
+  k10
+  k11
+  k12
+}
+
+model chapters {
+  id           Int            @id @default(autoincrement())
+  title        String
+  class        classes         
+  subject_id   Int
+  sub_chapters sub_chapters[]
+  subject      subjects       @relation(fields: [subject_id], references: [id]) // Relasi ke tabel Mapel
+}
+
+model sub_chapters {
+  id         Int    @id @default(autoincrement())
+  title      String
+  chapter_id Int
+
+  chapter chapters @relation(fields: [chapter_id], references: [id])
+}

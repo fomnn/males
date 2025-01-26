@@ -1,5 +1,5 @@
 function replaceSpacesWithDash(text: string): string {
-  return text.replaceAll(' ', '-')
+  return text.replaceAll(" ", "-");
 }
 
-export { replaceSpacesWithDash }
+export { replaceSpacesWithDash };

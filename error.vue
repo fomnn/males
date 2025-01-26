@@ -1,23 +1,22 @@
 <script setup lang="ts">
 const props = defineProps({
-  error: Object
-})
+  error: Object,
+});
 
-const handleError = () => clearError({ redirect: '/' })
+// const handleError = () => clearError({ redirect: "/" });
 
-const errorStatusCode = ref('')
+const errorStatusCode = ref("");
 
 onMounted(() => {
-  errorStatusCode.value =  props.error!.statusCode;
-})
-
+  errorStatusCode.value = props.error!.statusCode;
+});
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col justify-center items-center overflow-hidden relative">
-    <div class="bg-default h-[103vh] absolute w-screen -z-10"></div>
+  <div class="flex overflow-hidden relative flex-col justify-center items-center min-h-screen">
+    <div class="bg-default h-[103vh] absolute w-screen -z-10" />
     <Header class="fixed top-0 z-50" />
-    <ErrorPageNotFound v-if="errorStatusCode == '404'" />
+    <ErrorPageNotFound v-if="errorStatusCode === '404'" />
     <Footer class="fixed bottom-0" />
   </div>
 </template>

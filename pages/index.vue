@@ -1,3 +1,9 @@
+<script setup>
+useHead({
+  title: "Males",
+});
+</script>
+
 <template>
   <div class="px-[1rem] md:px-[3rem] lg:px-[6rem] ">
     <div class="">
@@ -10,24 +16,17 @@
       <img src="/bg/3d_7.png" alt="" class="slide-top z-20 drop-shadow-lg size-[9rem] lg:size-[12rem] absolute top-[95.5%] lg:top-[93%] left-[12%]" @contextmenu.prevent>
     </div>
 
-    <HomePerkenalan />
-    <HomeFiturUnggulan />
-    <HomeKutipanInspiratif />
-    <HomeDaftarMapel />
+    <HomeIntroduction />
+    <HomeFeaturedFeatures />
+    <HomeInspirationalQuotes />
+    <HomeSubjectsGrid />
   </div>
 </template>
 
-<script setup>
-useHead({
-  title: "Males"
-})
-</script>
-
 <style scoped>
 .slide-top {
-	animation: slide-top 4000ms infinite alternate both ;
+  animation: slide-top 4000ms infinite alternate both ;
 }
-
 
 @keyframes slide-top {
   0% {
@@ -37,5 +36,4 @@ useHead({
     transform: translateY(-23px);
   }
 }
-
 </style>

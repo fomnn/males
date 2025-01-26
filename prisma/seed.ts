@@ -8,6 +8,7 @@ async function main() {
   await prisma.chapters.deleteMany();
   await prisma.sub_chapters.deleteMany();
 
+  // eslint-disable-next-line no-console
   console.log("Data in database deleted");
 
   const subjectsData: Prisma.subjectsCreateManyInput[] = Array.from({ length: 10 }, () => {

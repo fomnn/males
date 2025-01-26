@@ -5,7 +5,6 @@ export const useMyShowNavStore = defineStore("showNav", () => {
 
   function toggleNav() {
     showNav.value = !showNav.value;
-    console.log(showNav.value);
   }
 
   function closeNav() {

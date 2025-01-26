@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+
+</script>
+
 <template>
   <div class="flex justify-center items-center gap-24 px-[2rem] md:px-[6rem] border h-[4rem] w-full backdrop-blur-sm bg-opacity-10 z-20 bg-white">
     <div class="flex items-center h-full gap-3">
@@ -6,10 +10,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-
-</script>
 
 <style>
 

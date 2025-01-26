@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col overflow-hidden">
-    <div class="flex flex-col md:flex-row min-h-screen">
+  <div class="flex overflow-hidden flex-col">
+    <div class="flex flex-col min-h-screen md:flex-row">
       <div class="w-screen md:w-fit">
         <BelajarSidebar class="md:w-[18rem] sticky top-0 w-screen" />
       </div>
@@ -12,7 +12,3 @@
     <!-- <Footer /> -->
   </div>
 </template>
-
-<script lang="ts" setup>
-
-</script>

@@ -1,5 +1,6 @@
+import type { IStaticMethods } from "preline/preline";
 import "preline/preline";
-import { type IStaticMethods } from "preline/preline";
+
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;

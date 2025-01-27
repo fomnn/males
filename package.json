@@ -12,12 +12,13 @@
     "lint:fix": "oxlint . --fix && eslint . --fix"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "npx tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "6.2.1",
     "aws4fetch": "^1.0.20",
-    "preline": "^2.7.0"
+    "preline": "^2.7.0",
+    "quill": "2.0.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.1.0",

@@ -14,12 +14,12 @@ datasource db {
 }
 
 model subjects {
-  id             Int        @id @default(autoincrement())
-  description    String
-  icon           String?
-  name           String
-  slug            String
-  chapters       chapters[] // Relasi ke tabel Bab
+  id          Int        @id @default(autoincrement())
+  description String
+  icon        String?
+  name        String
+  slug        String
+  chapters    chapters[] // Relasi ke tabel Bab
 }
 
 enum classes {
@@ -31,16 +31,19 @@ enum classes {
 model chapters {
   id           Int            @id @default(autoincrement())
   title        String
-  class        classes         
+  class        classes
   subject_id   Int
   sub_chapters sub_chapters[]
   subject      subjects       @relation(fields: [subject_id], references: [id]) // Relasi ke tabel Mapel
 }
 
 model sub_chapters {
-  id         Int    @id @default(autoincrement())
-  title      String
+  id         Int @id @default(autoincrement())
   chapter_id Int
+
+  title   String
+  content Json
+  index   Int
 
   chapter chapters @relation(fields: [chapter_id], references: [id])
 }

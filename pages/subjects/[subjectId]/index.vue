@@ -39,7 +39,7 @@ useHead({
     <div class="flex flex-col gap-3 md:flex-row md:items-center">
       <Icon
         v-if="subject?.icon" :name="subject?.icon" class="md:size-[8rem] size-[5rem]"
-        :style="{ color: subject.color }"
+
       />
       <div class="space-y-2">
         <h1 class="text-4xl font-semibold">

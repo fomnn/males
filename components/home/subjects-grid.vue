@@ -28,7 +28,7 @@ const { data: subjects } = await useFetch("/api/subjects");
         class="flex flex-col items-center px-5 py-3 w-full bg-white rounded-2xl border transition-shadow duration-300 cursor-pointer shadow-m hover:shadow-md"
         :to="`/subjects/${subject.id}`"
       >
-        <Icon v-if="subject.icon" :name="subject.icon" class="mb-1 text-4xl" :style="{ color: subject.color! }" />
+        <Icon v-if="subject.icon" :name="subject.icon" class="mb-1 text-4xl" />
         <h4 class="text-xl font-medium">
           {{ subject.name }}
         </h4>

@@ -18,8 +18,7 @@ model subjects {
   description    String
   icon           String?
   name           String
-  slug      String
-  color String
+  slug            String
   chapters       chapters[] // Relasi ke tabel Bab
 }
 

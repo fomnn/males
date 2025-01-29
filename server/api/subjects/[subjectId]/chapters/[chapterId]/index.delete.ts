@@ -3,11 +3,11 @@ import prisma from "~/lib/prisma";
 export default defineEventHandler(async (event) => {
   const chapterId = getRouterParam(event, "chapterId")!;
 
-  const subChapters = await prisma.sub_chapters.findMany({
+  const chapter = await prisma.chapters.delete({
     where: {
-      chapter_id: Number.parseInt(chapterId),
+      id: Number.parseInt(chapterId),
     },
   });
 
-  return subChapters;
+  return chapter;
 });

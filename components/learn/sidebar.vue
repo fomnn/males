@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { replaceSpacesWithDash } from "~/utils/replaceSpacesWithDash";
 
-const route = useRoute("learn-subjectId-bab"); // alamat url
+// const route = useRoute(""); // alamat url
 const { width } = useWindowSize();
 // const semuaBab = ref<Bab[] | undefined>() // daftar semua bab
 // const curMapel = ref<Mapel | undefined>() // mata pelajaran saat ini
@@ -9,7 +9,7 @@ const showNavBelajar = ref(false); // ref navigasi belajar
 const isMobile = computed(() => width.value < 768); // mengecek apakah perangkat yang digunakan mobile atau bukan
 const curBaborSubbab = ref<string[] | undefined>([]); // bab dan subbab saat ini
 
-const { data: subject } = await useFetch(`/api/subjects/${route.params.subjectId}`);
+// const { data: subject } = await useFetch(`/api/subjects/${route.params.subjectId}`);
 
 // watch(route.params, async () => {
 //   await GetCurBaborSubbab()
@@ -99,16 +99,16 @@ const { data: subject } = await useFetch(`/api/subjects/${route.params.subjectId
             <span
               class="cursor-pointer"
               @click="[
-                navigateTo(`/daftar-mata-pelajaran/${subject?.id}`),
+                // navigateTo(`/daftar-mata-pelajaran/${subject?.id}`),
                 showNavBelajar = false,
               ]"
-            >{{ subject?.name }}
+            >fdsf
             </span>
             /
             <span
               :class="!curBaborSubbab![1] ? 'font-semibold' : 'cursor-pointer'"
               @click="[
-                navigateTo(`/belajar/${subject?.id}/${replaceSpacesWithDash(curBaborSubbab![0].toLowerCase())}`),
+                // navigateTo(`/belajar/${subject?.id}/${replaceSpacesWithDash(curBaborSubbab![0].toLowerCase())}`),
                 showNavBelajar = false,
               ]"
             > {{ curBaborSubbab![0] }}

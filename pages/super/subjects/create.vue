@@ -9,7 +9,7 @@ const subjectData = reactive({
 });
 
 async function handleSubmit() {
-  const subject = await $fetch("/api/subjects", {
+  const _subject = await $fetch("/api/subjects", {
     method: "POST",
     body: subjectData,
   });

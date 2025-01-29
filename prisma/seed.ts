@@ -26,11 +26,14 @@ async function main() {
 
   const subjectsId = subjects.map(subject => subject.id);
 
+  let chapterIndex = 0;
   const chaptersData: Prisma.chaptersCreateManyInput[] = Array.from({ length: 10 }, () => {
+    chapterIndex++;
     return {
       title: faker.lorem.sentence(),
       class: faker.helpers.enumValue(classes),
       subject_id: faker.helpers.arrayElement(subjectsId),
+      index: chapterIndex,
     };
   });
 
@@ -46,9 +49,6 @@ async function main() {
     return {
       title: faker.lorem.sentence(),
       chapter_id: faker.helpers.arrayElement(chaptersId),
-      content: {
-        tes: "fds",
-      },
       index: subChaptersIndex,
     };
   });

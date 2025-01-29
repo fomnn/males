@@ -3,7 +3,7 @@ definePageMeta({
   layout: "superadmin",
 });
 
-const { data: subjects, status } = useFetch("/api/subjects");
+const { data: subjects, status } = await useFetch("/api/subjects");
 
 // const image = ref<File>();
 

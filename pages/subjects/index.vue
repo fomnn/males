@@ -3,7 +3,7 @@ useHead({
   title: "Mata Pelajaran | Males",
 });
 
-const { data: subjects } = useFetch("/api/subjects");
+const { data: subjects } = await useFetch("/api/subjects");
 </script>
 
 <template>

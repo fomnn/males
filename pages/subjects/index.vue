@@ -3,7 +3,7 @@ useHead({
   title: "Mata Pelajaran | Males",
 });
 
-const { data: subjects } = useFetch("/api/subjects");
+const { data: subjects } = await useFetch("/api/subjects");
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const { data: subjects } = useFetch("/api/subjects");
         class="px-5 py-3 rounded-2xl border cursor-pointer shadow-m"
         :to="`/subjects/${subject.id}`"
       >
-        <Icon v-if="subject.icon" :name="subject.icon" class="mb-1 text-4xl" :style="{ color: subject.color! }" />
+        <Icon v-if="subject.icon" :name="subject.icon" class="mb-1 text-4xl" />
         <h4 class="text-xl font-medium">
           {{ subject.name }}
         </h4>

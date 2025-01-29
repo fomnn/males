@@ -20,7 +20,8 @@ export default [
     },
     rules: {
       "node/prefer-global/process": "off",
+      "no-restricted-globals": "off",
     },
   }),
-  oxlint.configs["flat/all"],
+  oxlint.configs["flat/recommended"],
 ];

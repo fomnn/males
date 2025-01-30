@@ -9,8 +9,8 @@ const isEditing = ref(false);
 
 const subChapterName = ref("");
 
-async function handleUpdateSubChapter() {
-  await $fetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}`, {
+function handleUpdateSubChapter() {
+  $fetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}`, {
     method: "PUT",
     body: {
       title: subChapterName.value,
@@ -23,8 +23,8 @@ async function handleUpdateSubChapter() {
   });
 }
 
-async function handleDeleteSubChapter() {
-  await $fetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}`, {
+function handleDeleteSubChapter() {
+  $fetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}`, {
     method: "DELETE",
     onResponse: () => {
       router.replace(`/super/subjects/${route.params.subjectId}/${route.params.chapterId}`);
@@ -69,7 +69,6 @@ definePageMeta({
       </button>
     </p>
     <!-- <p>sub chapter description: {{ subChapter?.description }}</p> -->
-    <!-- TODO: add description to sub chapter -->
     <p>articles:</p>
     <NuxtLink :to="`/super/subjects/${route.params.subjectId}/${route.params.chapterId}/${route.params.subChapterId}/create-article`" class="bg-white">
       create new article

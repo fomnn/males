@@ -1,5 +1,3 @@
-import { signJWT } from "@cross/jwt";
-
 export default defineEventHandler(async (event) => {
   const superadminPassword = useRuntimeConfig(event).superadminPassword;
 
@@ -9,18 +7,18 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 401 });
 
   const payload = {
-    type: "super",
+    user: {
+      name: "superadmin001",
+      type: "superadmin",
+    },
   };
 
-  const token = await signJWT(payload, "e666422a-6190-485b-8060-bbee6063f7e8", { expiresIn: "4h" });
-
-  setCookie(event, "token_superadmin", token, {
-    maxAge: 60 * 60 * 4,
-    httpOnly: true,
-    sameSite: "strict",
+  const session = await setUserSession(event, payload, {
+    maxAge: 60 * 60 * 3,
   });
 
   return {
     message: "success",
+    session,
   };
 });

@@ -1,3 +1,7 @@
 export default defineEventHandler(async (event) => {
-  deleteCookie(event, "token_superadmin");
+  await clearUserSession(event);
+
+  return {
+    message: "success",
+  };
 });

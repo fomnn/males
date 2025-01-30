@@ -1,9 +1,14 @@
 <script lang="ts" setup>
-definePageMeta({
-  layout: "superadmin",
-});
-
+const { removeSuperadmin } = useMySuperadminAuthStore();
 const { data: subjects, status } = await useFetch("/api/subjects");
+
+function handleLogout() {
+  $fetch("/api/superadmin/logout", {
+    method: "POST",
+  });
+  removeSuperadmin();
+  navigateTo("/super/auth/login");
+}
 
 // const image = ref<File>();
 
@@ -21,6 +26,9 @@ const { data: subjects, status } = await useFetch("/api/subjects");
 //     body: formData,
 //   });
 // }
+definePageMeta({
+  layout: "superadmin",
+});
 </script>
 
 <template>
@@ -29,9 +37,14 @@ const { data: subjects, status } = await useFetch("/api/subjects");
       <h1 class="text-3xl">
         Content
       </h1>
-      <NuxtLink to="/super/subjects/create" class="px-4 py-2 rounded-md bg-white">
-        Add Subject
-      </NuxtLink>
+      <div class="flex items-center gap-3">
+        <NuxtLink to="/super/subjects/create" class="px-4 py-2 rounded-md bg-white">
+          Add Subject
+        </NuxtLink>
+        <button class="px-4 py-2 rounded-md bg-white" @click="handleLogout">
+          Logout
+        </button>
+      </div>
     </div>
     <div class="grid grid-cols-5 gap-3 mt-6">
       <template v-if="status !== 'pending'">

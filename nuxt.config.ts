@@ -47,6 +47,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    superadminPassword: "",
     public: {
       imageStorageUrl: "",
     },

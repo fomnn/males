@@ -13,6 +13,8 @@ async function handleSubmit() {
     method: "POST",
     body: subjectData,
   });
+
+  return navigateTo("/super/subjects", { replace: true });
 }
 </script>
 

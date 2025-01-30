@@ -2,6 +2,7 @@ import prisma from "~/lib/prisma";
 
 export default defineEventHandler(async (event) => {
   const chapterId = getRouterParam(event, "chapterId")!;
+  
 
   const { title } = await readBody(event);
 

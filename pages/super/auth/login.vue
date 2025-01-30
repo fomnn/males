@@ -1,18 +1,23 @@
 <script lang="ts" setup>
-const password = ref("");
-const { setSuperadmin } = useMySuperadminAuthStore();
+const router = useRouter();
+
+const { session, loggedIn } = useUserSession();
+const password = ref("hehe");
 
 async function handleLogin() {
   try {
-    await $fetch("/api/superadmin/login", {
+    const { session: newUserSession } = await $fetch("/api/superadmin/login", {
       method: "POST",
       body: {
         password: password.value,
       },
     });
-    setSuperadmin();
 
-    navigateTo("/super");
+    if (newUserSession) {
+      session.value = newUserSession;
+    };
+
+    return router.replace("/super/subjects");
   }
   catch (e) {
     console.error(e);
@@ -28,6 +33,7 @@ definePageMeta({
 
 <template>
   <div>
+    <p>{{ loggedIn }}</p>
     <form @submit.prevent="handleLogin">
       <input v-model="password" type="text">
       <button type="submit">

@@ -1,31 +1,17 @@
 <script lang="ts" setup>
-const { removeSuperadmin } = useMySuperadminAuthStore();
+const { loggedIn, fetch } = useUserSession();
+const router = useRouter();
+
 const { data: subjects, status } = await useFetch("/api/subjects");
 
-function handleLogout() {
-  $fetch("/api/superadmin/logout", {
+async function handleLogout() {
+  await $fetch("/api/superadmin/logout", {
     method: "POST",
   });
-  removeSuperadmin();
-  navigateTo("/super/auth/login");
+  await fetch();
+  router.replace("/super/auth/login");
 }
 
-// const image = ref<File>();
-
-// function onImageChange(event: Event) {
-//   image.value = (event.target as any).files[0] as File;
-// }
-
-// async function handleUpload() {
-//   const formData = new FormData();
-
-//   formData.append("image", image.value!);
-
-//   await $fetch("/api/r2", {
-//     method: "POST",
-//     body: formData,
-//   });
-// }
 definePageMeta({
   layout: "superadmin",
 });
@@ -35,7 +21,7 @@ definePageMeta({
   <div class="">
     <div class="flex justify-between">
       <h1 class="text-3xl">
-        Content
+        Content {{ loggedIn }}
       </h1>
       <div class="flex items-center gap-3">
         <NuxtLink to="/super/subjects/create" class="px-4 py-2 rounded-md bg-white">

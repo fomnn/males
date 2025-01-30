@@ -15,7 +15,6 @@
     "seed": "npx tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@cross/jwt": "npm:@jsr/cross__jwt@^0.5.0",
     "@prisma/client": "6.3.0",
     "aws4fetch": "^1.0.20",
     "preline": "^2.7.0",
@@ -33,6 +32,7 @@
     "eslint": "^9.19.0",
     "eslint-plugin-oxlint": "^0.15.8",
     "nuxt": "^3.15.4",
+    "nuxt-auth-utils": "0.5.10",
     "nuxt-icon": "^0.6.10",
     "oxlint": "^0.15.8",
     "prisma": "^6.3.0",

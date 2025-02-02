@@ -25,14 +25,15 @@ async function submitArticle() {
   const html = quill.getSemanticHTML();
   const delta = JSON.stringify(quill.getContents());
   const titleText = title.value;
+  const imageCoverF = imageCover.value;
 
   const formData = new FormData();
 
   formData.append("title", titleText);
   formData.append("html", html);
   formData.append("delta", delta);
-  if (imageCover.value) {
-    formData.append("imageCover", imageCover.value);
+  if (imageCoverF) {
+    formData.append("imageCover", imageCoverF);
   }
 
   const article = await $fetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}/articles`, {

@@ -119,6 +119,7 @@ definePageMeta({
         update
       </button>
     </div>
+    <p>halo</p>
     <div :class="{ hidden: editContent }" v-html="html" />
   </div>
 </template>

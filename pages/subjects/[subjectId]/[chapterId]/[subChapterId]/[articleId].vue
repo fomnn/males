@@ -4,6 +4,8 @@ const route = useRoute("subjects-subjectId-chapterId-subChapterId-articleId");
 const { data: subChapter } = await useFetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}`);
 const { data: article } = await useFetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}/articles/${route.params.articleId}`);
 const { data: html } = await useFetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}/articles/${route.params.articleId}/html`);
+
+const contentToShow = () => html.value?.replaceAll("&nbsp;", " ").replaceAll("&amp;", "&");
 </script>
 
 <template>
@@ -14,17 +16,27 @@ const { data: html } = await useFetch(`/api/subjects/${route.params.subjectId}/c
         Daftar article untuk sub bab {{ subChapter?.title }}
       </h1>
     </NuxtLink>
-    <div class="flex flex-col gap-3 md:flex-row md:items-center">
-      <div class="space-y-2">
-        <h1 class="text-4xl font-semibold">
-          {{ article?.title }}
-        </h1>
-        <!-- <p class="w-10/12">
-          {{ subject?.name }}
-        </p> -->
+    <div class="px-[18%]">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center mb-6">
+        <div class="space-y-2">
+          <h1 class="text-4xl font-semibold">
+            {{ article?.title }}
+          </h1>
+        </div>
       </div>
+      <img v-if="article?.imageCoverName" class="aspect-video w-full object-cover" :src="useGetImageCoverLink(article?.id, article?.imageCoverName)" alt="image cover">
+      <div v-if="html" class="content" v-html="contentToShow()" />
     </div>
-    <img v-if="article?.imageCoverName" :src="useGetImageCoverLink(article?.id, article?.imageCoverName)" alt="">
-    <div v-if="html" v-html="html" />
   </div>
 </template>
+
+<style>
+.content p {
+  width: 100%;
+  /* text-wrap: balance; */
+  text-align: justify;
+  white-space: normal;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+</style>

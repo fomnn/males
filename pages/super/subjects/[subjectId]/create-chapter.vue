@@ -1,5 +1,9 @@
 <script lang="ts" setup>
-import { classes } from "@prisma/client";
+const classes = {
+  k10: "k10",
+  k11: "k11",
+  k12: "k12",
+};
 
 const route = useRoute("super-subjects-subjectId-create-chapter");
 const router = useRouter();
@@ -37,7 +41,7 @@ definePageMeta({
       <div class="">
         <label>class</label>
         <select v-model="newChapterData.classq">
-          <option v-for="c in classes" :key="c" :value="c">
+          <option v-for="[c] in Object.entries(classes)" :key="c" :value="c">
             {{ c.substring(1) }}
           </option>
         </select>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { classes } from "@prisma/client";
 
-const route = useRoute("super-subjects-subjectId");
+const route = useRoute("super-subjects-subjectId-create-chapter");
 const router = useRouter();
 
 const newChapterData = reactive({

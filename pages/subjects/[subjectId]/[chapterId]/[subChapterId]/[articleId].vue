@@ -5,7 +5,7 @@ const { data: subChapter } = await useFetch(`/api/subjects/${route.params.subjec
 const { data: article } = await useFetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}/articles/${route.params.articleId}`);
 const { data: html } = await useFetch(`/api/subjects/${route.params.subjectId}/chapters/${route.params.chapterId}/subChapters/${route.params.subChapterId}/articles/${route.params.articleId}/html`);
 
-const contentToShow = () => html.value?.replaceAll("&nbsp;", " ").replaceAll("&amp;", "&");
+const contentToShow = computed(() => html.value?.replaceAll("&nbsp;", " ").replaceAll("&amp;", "&"));
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const contentToShow = () => html.value?.replaceAll("&nbsp;", " ").replaceAll("&a
         </div>
       </div>
       <img v-if="article?.imageCoverName" class="aspect-video w-full object-cover" :src="useGetImageCoverLink(article?.id, article?.imageCoverName)" alt="image cover">
-      <div v-if="html" class="content" v-html="contentToShow()" />
+      <div v-if="html" class="content" v-html="contentToShow" />
     </div>
   </div>
 </template>
